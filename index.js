@@ -15,7 +15,7 @@ console.log(dumpPath);
 
 console.log('Program has been started');
 
-cron.schedule('* * * * *', () => {
+cron.schedule('0 3 * * *', () => {
     console.log('making dump');
     shell.exec('mongodump '+ `${dbName ? `--db ${dbName}` : ''} ${username ? `--username ${username}` : ''} ${password ? `--password ${password}` : ''}` +' --gzip '+ `--out ${dumpPath ? dumpPath : '/home/'}` + '`date +"%Y-%m-%d-%H:%M:%S"`');
 });
